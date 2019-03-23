@@ -1,0 +1,5 @@
+<% @posts.each do |x| %>
+  <div class= 'd-flex justify-content-center'>
+  <%= image_tag x.avatar.url, class: 'post-image'%>
+  </div>
+<% end %>

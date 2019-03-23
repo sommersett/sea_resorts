@@ -1,0 +1,25 @@
+<div class= 'text-center'>
+	<h1> Upload photo of your favorite resort</h1>
+</div>
+<div class="w-50 p-3 mx-auto text-center">
+  <%= form_for @post do |form| %>
+
+  <div class="text-field">	
+    <%= form.label :resort_name, :style => "font-size: 18px" %>
+    <%= form.text_field :resort_name, type: 'form-control', :class => "form-control" %>
+  </div>
+		<br/>	  
+  <div class="text-field">	
+    <%= form.label :location, :style => "font-size: 18px" %>
+    <%= form.text_field :location, type: 'form-control', :class => "form-control" %>
+  </div>
+	<br/>	 
+
+  <div class="image-field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+  <%= form.submit "Upload", :class => "btn btn-outline", :style => "border-color: #3ac9c6; color: #3ac9c6" %>
+  <% end %>
+</div>
+

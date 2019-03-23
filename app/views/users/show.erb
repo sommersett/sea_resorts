@@ -1,0 +1,46 @@
+<div class= 'text-center'>
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+  <%= @user.email %>
+</div>
+
+<div class="d-flex justify-content-center">
+  <% if @user.avatar.url == nil%>
+    <%= image_tag "/default_profile.png", :class => "profile-pic" %>
+  <% else %>
+    <%= image_tag @user.avatar.url, :class => "profile-pic"%> 
+  <% end %>
+</div>
+  </br>
+<div class= 'd-flex justify-content-center'>
+  <%= link_to 'Post your faviorate resort here!', new_post_path, :class => "btn btn-outline", :style => "border-color: #3ac9c6; color: #3ac9c6"  %>
+</div>
+  </br>
+
+<% if @user.posts == [] %>
+<div class= "text-center">
+<p> You don't have any posts yet. </p>
+</div>
+<% else %>
+  <% @posts.each do |post| %>
+      <div class= 'image-wrapper'>
+        <%= image_tag post.avatar.url, class: 'post-image' %>
+      </div>
+      <div>
+        <%= post.resort_name %>
+      </div>
+      <div>
+        <%= post.location %>
+      </div>
+      <div>
+        <%= link_to "Meetup groups in this location", post_meetups_path(post) %>
+      </div>
+      <div>
+      <%= link_to 'Delete', post, method: :delete, :controller => 'posts', 
+            data: { confirm: "You sure?"} %>
+      </div>
+ 
+  <% end %>
+
+<% end %>
+

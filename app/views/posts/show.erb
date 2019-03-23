@@ -1,0 +1,9 @@
+<%= image_tag @post.avatar.url, class:'post-image' %>
+</br>
+<%= @post.resort_name %>
+</br>
+<%= @post.location %>
+</br>
+<%= link_to "Meetup groups in this location", post_meetups_path(@post) %>
+</br>
+<%= link_to 'Back to gallery', posts_path %>

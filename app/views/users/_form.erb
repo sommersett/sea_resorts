@@ -1,0 +1,31 @@
+<div class="text-field">	
+  <%= form.label :first_name, :style => "font-size: 18px" %>
+  <%= form.text_field :first_name, type: 'form-control', :class => "form-control" %>
+</div>
+<br/>
+<div class="text-field">	
+  <%= form.label :last_name, :style => "font-size: 18px" %>
+  <%= form.text_field :last_name, type: 'form-control', :class => "form-control" %>
+</div>
+<br/>
+<div class="text-field">
+  <%= form.label :email, :style => "font-size: 18px" %>
+  <%= form.text_field :email, type: 'email', :class => "form-control" %>
+</div>
+<br/>
+<div class="password-field">
+  <%= form.label :password, :style => "font-size: 18px" %>
+  <%= form.password_field :password, :class => "form-control" %>
+</div>
+<br/>
+<div class= "avatar-field">
+  <%= form.label :avatar, :style => "font-size: 18px" %>
+  <%= form.file_field :avatar%>
+</div>
+<br/>
+<div>
+  <%= form.submit :class => "btn btn-outline", :style => "border-color: #3ac9c6; color: #3ac9c6" %>
+</div>
+
+
+

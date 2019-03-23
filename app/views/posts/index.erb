@@ -1,0 +1,17 @@
+    <div>
+    <% @posts.each do |x| %>
+    
+    <div>
+    <%= link_to post_path(x) do %>
+    <%= image_tag x.avatar.url, class:'post-image' %>
+    <% end %>
+    <div>
+    <%= x.resort_name %>
+    </div>
+    <div>
+    <%= x.location %>
+    </div>
+
+    </div>
+		<% end %>
+    </div>

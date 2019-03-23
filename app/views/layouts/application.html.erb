@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SeaResorts</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+    <body style="margin: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to 'Home', root_path, class: "nav-link" %><span class="sr-only">(current)</span> 
+          </li>
+              <% if logged_in? %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%= link_to 'Profile', current_user, class: "dropdown-item" %>
+                    <%= link_to 'Edit Profile', edit_user_path(current_user), class: "dropdown-item" %>
+                    <%= link_to 'Delete Profile', user_path(current_user), method: :delete, class: "dropdown-item" %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to 'Log out', logout_path, method: :delete, class: "dropdown-item" %>
+                  </div>
+                </li>
+              <% else %>
+                <li class="nav-item active">
+                  <%= link_to "Log in", login_path, class: "nav-link"%>
+                </li>
+              <% end %> 
+        </ul>
+          <div id="search-div" class="form-inline my-2 my-lg-0">
+            <%= form_tag posts_path, id: "resort-search", method: :get do %> 
+            <%= text_field_tag "term", nil, list: "list", placeholder: "Search", class: "form-control mr-sm-2" %>
+            <datalist id="list"></datalist>
+            <% end %>
+          </div>
+      </div>
+    </nav>
+      <div id="flash">
+        <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>"><%=h value %></div>
+        <% end %>
+      </div>
+    <%= yield %>
+  </body>
+</html>

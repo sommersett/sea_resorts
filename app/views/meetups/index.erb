@@ -1,0 +1,11 @@
+<h1>Meetup groups </h1>
+
+<% @array_of_groups.each do |x| %>
+
+<%= x %>
+
+</br>
+<% end %>
+
+
+<%= link_to 'Back to profile', user_path(current_user) %>

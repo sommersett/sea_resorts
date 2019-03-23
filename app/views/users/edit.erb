@@ -1,0 +1,16 @@
+<h2 class="text-center">Edit Profile </h2>
+	 <div class="container d-flex justify-content-between">
+   		<div class="d-inline-block" style="width: 60%" >
+      <%= form_for @user do |form| %>
+      <%= render partial: '/users/form', object: form %>
+      <% end %>
+      </div>
+      
+      <div class="container d-inline-block mx-auto text-center" style="width: 30%; padding-top: 40px">
+        <% if @user.avatar.url == nil%>
+          <%= image_tag "/default_profile.png", :class => "profile-pic-edit"%>
+        <% else %>
+          <%= image_tag @user.avatar.url, :class => "profile-pic-edit"%> 
+        <% end %>
+		  </div>
+   </div>
