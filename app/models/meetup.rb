@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Meetup
   include HTTParty
   base_uri 'api.meetup.com'
@@ -9,12 +11,11 @@ class Meetup
     @options = {
       query: {
         key: api_key,
-        sign: "true",
-        desc: "true",
+        sign: 'true',
+        desc: 'true',
         page: 10
       }
     }
-    
   end
 
   def get_data(location)
@@ -23,12 +24,10 @@ class Meetup
   end
 
   def events(location)
-    
     if get_data(location).code.to_i == 200
       get_data(location).parsed_response
     else
-      raise "Error fetching data from Meetup API"
+      raise 'Error fetching data from Meetup API'
     end
   end
-
 end

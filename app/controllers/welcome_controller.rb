@@ -7,5 +7,4 @@ class WelcomeController < ApplicationController
   # homepage get
 
   private
-
 end

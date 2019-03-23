@@ -15,19 +15,18 @@ module SessionsHelper
   #   # sets a remember_token for
   # end
 
-	def current_user
-		#
+  def current_user
     if session[:user_id]
-			@current_user ||= User.find_by(id: session[:user_id])
-			#we’ll follow a common Ruby convention by storing the result of User.find_by in an instance variable”
+      @current_user ||= User.find_by(id: session[:user_id])
+      # we’ll follow a common Ruby convention by storing the result of User.find_by in an instance variable”
 
       # if sessions' user_id is equal to user_id(url), @current_user is not nil and is returned
       # elsif (user_id = cookies.signed[:user_id])
-        # user = User.find_by(id: user_id)
+      # user = User.find_by(id: user_id)
       #   #if user_id is equal to user_id in cookies
       #   if user && user.authenticated?(cookies[:remember_token])
-          # log_in user
-          # @current_user = user
+      # log_in user
+      # @current_user = user
       #     #returns @current_user if authenticated by remember_token
       #   end
     end
