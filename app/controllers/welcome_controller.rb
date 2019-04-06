@@ -6,5 +6,4 @@ class WelcomeController < ApplicationController
   end
   # homepage get
 
-  private
 end

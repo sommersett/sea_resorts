@@ -45,6 +45,8 @@ class User < ApplicationRecord
   #   end
 
   def self.create_with_auth_and_hash(authentication, auth_hash)
+
+    #creates a new user if it doesnt exist
     user = create!(
       first_name: auth_hash['info']['first_name'],
       last_name: auth_hash['info']['last_name'],
@@ -59,9 +61,9 @@ class User < ApplicationRecord
     # puts into user's auth attribute
     user
   end
-  # The first method, create_with_auth_hash will create a User object based on the information given by the provider.
+  # The method, create_with_auth_hash will create a User object based on the information given by the provider.
 
-  # grab google to access google for user data
+  # grab google to access google for user data, returns token
   def google_token
     x = authentications.find_by(provider: 'google_oauth2')
     return x.token unless x.nil?

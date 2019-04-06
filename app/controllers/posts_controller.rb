@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     @posts = @posts.search_by_resort_name(params['term']) if params[:term]
     # if search params is entered, calls on the search_by_resort_name
+    # search_by_resort_name is the name of method, against resort_name column
     # sends a get request from the form
     # server returns results in index page
   end
